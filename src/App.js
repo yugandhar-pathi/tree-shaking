@@ -19,7 +19,7 @@ function App() {
       {users && (
         <ul>
           {users.map(user => (
-            <li>{user.description}</li>
+            <li key={user.id}>{user.description}</li>
           ))}
         </ul>
       )}
