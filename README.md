@@ -1,3 +1,7 @@
+### When I run `npm run build` it creates two chunks (when put together size comes to 1.8MB). I hardly have one source file in this app. Not sure why my build size is soo high!!
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
