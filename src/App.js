@@ -1,25 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react';
 
 function App() {
+  const [users, setUsers] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      let res = await fetch('/users');
+      res = await res.json();
+      setUsers(res.users);
+    }
+    fetchData();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Sample app to demo Tree Shaking Error</h1>
+      {!users && <p>Loading...</p>}
+      {users && (
+        <ul>
+          {users.map(user => (
+            <li>{user.description}</li>
+          ))}
+        </ul>
+      )}
+    </>
   );
 }
 
